@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Hub</title>
+	<link rel="stylesheet" href="index.css"></link>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+<body>
+	<!-- Nav bar-->
+	<nav class="navbar navbar-light bg-warning">
+  		<a class="navbar-brand brand-name" href="#">
+    		<img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+			<i class="fa fa-film" aria-hidden="true"></i>
+    			Movie Hub
+  		</a>
+	</nav>
+
+	<!-- search bar -->
+	<div class="container mt-3 mb-4">
+		<form id="search-form">
+			<div class="row d-flex justify-content-around align-self-center" >
+				<input class="form-control col-5 col-md-2 my-1" id="movie-title" type="text" placeholder="Movie Title">
+				or
+				<input class="form-control col-5 col-md-2 my-1" type="text" id="movie-id" placeholder="IMDb Id">
+				<select name="yearpicker" class="col-10 col-md-4 form-control my-1" id="yearpicker" > 
+					<option value="none" selected>Year of Release(optional)</option>
+				</select>
+				<button type="button" class="btn col-10 col-md-2 btn-outline-warning my-1" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i> Search </button>
+			</div>
+		</form>
+		<span id="warning-message">
+		*Either of the highlighted field is a must</span>
+	</div>
+	
+	<!-- movie details  display tab-->
+	<div  id="movie-details-tab" class="container bg-warning rounded pt-2 display-hidden ">
+		<div class = "container my-2">
+			<div class="row">
+				<div class="col-12"> 
+					<div class="container bg-dark text-light rounded white-shadow">
+						<div class="row m-1">
+							<div class= "col-12">
+								<span  id="display-title">
+									<!-- place holder for Title -->	
+								</span>
+								<span id="display-year">
+									<!-- place holder for year -->	
+								</span>
+							</div>
+						</div>
+						<div class="row m-1 secondary-info-tab">
+							<div class="col-12 col-md-2" >
+								<span class="pretext-color">Type : </span>
+								<span id="display-type">
+								<!-- place holder for type -->	
+								</span>
+							</div>
+							<div class="col-12 col-md-2">
+								<span class="pretext-color"> Rated :</span>
+								<span  id="display-rated">
+								<!-- place holder for rated-->	
+								</span>
+							</div>
+							<div class="col-12  col-md-2">
+								<span class="pretext-color">Runtime :</span>
+								<span  id="display-runtime">
+								<!-- place holder for runtime-->	
+								</span>
+							</div>
+							<div class="col-12 col-md-3" >
+								<span class="pretext-color">Genre :</span>
+								<span id="display-genre">
+								<!-- place holder for genre-->	
+								</span>
+							</div>
+							<div class="col-12  col-md-3">
+								<span class="pretext-color">Released :</span>
+								<span  id="display-release">
+								<!-- place holder for release-->	
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--movie poster  container and its adjacent other details tab -->
+		<div class="container"> 
+			<div class="row">
+				<div class="col-12  col-md-4" >
+						<img id="display-poster"  class="rounded white-shadow" alt="Image not available"></img>	
+						<div class="container bg-dark text-light rounded white-shadow my-2">
+							<div class="row pretext-color m-0">
+								IMDb Details
+							</div>
+							<div class="row m-1">
+								<div class="pretext-color col-7">ID : </div>
+								<div class="col-5" id="display-imdb-id">
+									<!-- place holder for imdb-id-->	
+								</div>
+							</div>
+							<div class="row m-1">
+								<div class="pretext-color col-7"> Rating : </div>
+								<div class="col-5" id="display-imdb-rating">
+								<!-- place holder for imdb-rating -->	
+								</div>
+							</div>
+							<div class="row m-1" >
+								<div class="pretext-color col-7"> Votes : </div>
+								<div class="col-5" id="display-imdb-votes">
+									<!-- place holder for imdb-votes -->	
+								</div>
+							</div>
+						</div>
+				</div>	
+				<div class="col-12  col-md-8">
+					<div class="container bg-dark text-light rounded white-shadow my-3">
+						<div class="row m-1" id="display-plot">
+								<!-- place holder for plot -->	
+						</div>
+					</div>
+					<div class="container bg-dark text-light rounded white-shadow my-3"> 
+						<div class="row">
+							<div class="col-12 col-sm-6  pretext-color col-md-4">
+									Director :
+							</div>
+							<div class="col-12 col-sm-6  col-md-8" id="display-director">
+								<!-- placeholder for director -->
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color col-md-4">
+								Writer :
+							</div>
+							<div class="col-12 col-sm-6  col-md-8"  id="display-writer">
+								<!-- placeholder for writer -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6  pretext-color col-md-4">
+								Actors :
+							</div>
+							<div class="col-12 col-sm-6 col-md-8" id="display-actors">
+								<!-- placeholder for actors -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color col-md-4">
+								Website :
+							</div>
+							<div class="col-12 col-sm-6 col-md-8 website-container" >
+								<a id="display-website">
+									<!-- placeholder for website -->
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6  pretext-color col-md-4">
+								Production :
+							</div>
+							<div class="col-12 col-sm-6 col-md-8" id="display-production">
+									<!-- placeholder for production -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color  col-md-4">
+								Language :
+							</div>
+							<div class="col-12 col-sm-6 col-md-8" id="display-language">
+								<!-- placeholder for language -->
+							</div>
+						</div>
+					</div>
+
+					<!-- Container for other details -->
+					<div class="container my-3 bg-dark text-light rounded white-shadow">
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color  col-md-4">
+								DVD :
+							</div>
+							<div class="col-12 col-sm-6  col-md-8" id="display-dvd">
+								<!-- placeholder for dvd -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color col-md-4">
+								Box Office :
+							</div>
+							<div class="col-12 col-sm-6  col-md-8" id="display-boxOffice">
+								<!-- placeholder for Box office -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6 pretext-color  col-md-4">
+								Country :
+							</div>
+							<div class="col-12 col-sm-6 col-md-8" id="display-country">
+								<!-- placeholder for country -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6  pretext-color col-md-4">
+								Awards :
+							</div>
+							<div class="col-12 col-sm-6  col-md-8" id="display-awards">
+								<!-- placeholder for Awards -->
+							</div>
+						</div>
+					</div>
+
+					<!-- Ratings tab(html contents will be added dynamically based on query response) -->
+					<div class="container bg-dark text-light rounded white-shadow my-3 " id="ratings-tab">
+							<!-- place holder for all ratings -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--Tab to display when no movie is found for the given details -->
+	<div class="container  bg-warning rounded display-hidden" id="search-fail">
+		<div class="row justify-content-around">
+			<div class="col-10 col-sm-5 col-md-4 p-2">
+				<img id="warning-image"class="rounded-circle" src="images/warning.jpg">
+			</div>
+			<div class="col-12 order-first order-sm-last col-sm-7 col-md-8 align-self-center">
+				No movies found with the provided details.<span id="invalid-movie-details"><!--placeholder for wrong movie details --> </span>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+	<script src="jquery-3.3.1.min.js"> </script>
+	<script src="common-functions-used.js"></script>
+	<script src="index.js"></script>
+
+</body>
+</html>
