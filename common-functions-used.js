@@ -58,7 +58,7 @@ let dataBinding = (movie_details) => {
 
 //to generate GET url based on inputs provided
 let generate_url = () => {
-	let search_url = "http://www.omdbapi.com/";
+	let search_url = "https://www.omdbapi.com/";
 	if ( $("#movie-title").val().length != 0)
 		{
 			if ( $("#movie-id").val().length != 0)
