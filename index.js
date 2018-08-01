@@ -4,13 +4,24 @@ $(document).ready ( () => {
 	$("#movie-details-tab").hide();
 	$("#search-fail").removeClass("display-hidden");
 	$("#search-fail").hide();
+	$(".progress-bar").hide();
+	$(".progress").hide();
 	
 	//to create dropdown for Years
 	for (i = new Date().getFullYear(); i > 1900; i--)
 	{
 	    $('#yearpicker').append($('<option />').val(i).html(i));
 	}
-		
+	
+	//to show progress bar when loading
+	$(document).ajaxStart( () => {
+		$(".progress-bar").show();
+		$(".progress").show();
+    });
+    $(document).ajaxComplete( () => {
+        $(".progress-bar").hide();
+		$(".progress").hide();
+	});
 	//to handle click function of Search button
 	$("#search-btn").click( () => {
 		$("#warning-message").hide();
@@ -18,6 +29,9 @@ $(document).ready ( () => {
 		$("#movie-id").removeClass("red-shadow");
 		$("#ratings-tab").empty();
 		$("#ratings-tab").hide();
+		$("#movie-details-tab").hide();
+		$("#search-fail").hide();
+		
 		if (validate_input())
 		{
 			getMovieDetails( $("#movie-title").val() );
